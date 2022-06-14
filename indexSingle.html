@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+            <h1>Calculator</h1>
+            <div class="text">
+                <p>Enter a number:</p>
+                <input type="text" id="nameNumber" name="enterNumber"><br>
+            </div>
+              <button class="calcButton" id="calc" onclick="calcTipOut()">calc</button>
+              <button class="resetButton" id="reset" onclick="resetTip()">reset</button>
+         <div class="footer" id="footer"></div>
+          
+    </div>
+      <script>
+
+        function calcTip(num){
+            if (num >= 50  && num >= 300) {
+                return num * 0.15
+            } else {
+                return num * 0.2
+            }
+        }
+   
+        function calcTipOut(){
+            var Bill=document.getElementById("nameNumber").value;
+            result=calcTip(Bill)
+            setText("footer",result);
+        }
+
+    function setText(id,newvalue) {
+        var s= document.getElementById(id);
+        s.innerHTML = newvalue;
+    } 
+
+     function resetTip(){
+        document.getElementById("nameNumber").value = "";
+        document.getElementById("footer").innerHTML = "";
+     }
+
+
+
+      </script>
+
+</body>
+</html>

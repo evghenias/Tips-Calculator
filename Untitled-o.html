@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    
+
+Bill Array: <input type="text" id="bills" value=""><br>
+Tips Array: <input type="text" id="tips" value=""><br>
+Totals Array: <input type="text" id="total" value=""><br>
+
+<button onclick="Calculate()">Calculate</button>
+
+<script>
+
+bills = [];
+tips = [];
+total = [];
+
+function calcTip(bill){
+	if (bill>=50 && bill<=300){
+		return bill*0.15
+	} else {
+		return bill*0.2
+	}
+}
+
+function getBills(){
+	var strBills=document.getElementById("bills").value
+    bills=strBills.split(" ");
+}
+
+function calcTips(){
+    var arrayLength = bills.length;
+	for (var i = 0; i < arrayLength; i++) {
+		tips.push(calcTip(bills[i]))
+    }
+}
+
+function calcTotals(){
+	var arrayLength = bills.length;
+	for (var i = 0; i < arrayLength; i++) {
+		total[i]=parseFloat(tips[i])+parseFloat(bills[i])
+	}
+}
+
+function showArray(myArray,elementName){
+	document.getElementById(elementName).value=myArray.join(" ")
+}
+
+function Calculate(){
+
+	getBills()
+	calcTips()
+	calcTotals()
+    showArray(tips,"tips")
+	showArray(total,"total")
+	
+}
+
+
+</script>
+
+</body>
+</html>
